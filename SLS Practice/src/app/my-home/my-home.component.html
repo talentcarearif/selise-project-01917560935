@@ -33,7 +33,9 @@
                             padding: 10px;">
                   <div *ngFor="let item of bmitem.value" fxLayout="row" fxLayoutAlign="space-between center">
                     <div>
-                      <td style="font-weight:bold">{{item.title}}</td>
+                      <td style="font-weight:bold; cursor: pointer;">
+                        <a style="text-decoration: none;" href={{item.url}}>{{item?.title}}</a>
+                      </td>
                     </div>
                     <div style="margin: 0px 10px 20px 50px;">
                       <button 
@@ -67,7 +69,7 @@
                (click)="onClickDiv()"      
           >
             <div>
-              <span style="font-weight:bold">
+              <span style="font-weight:bold;">
                 Title
               </span> : {{selectedItem?.title}}
             </div>

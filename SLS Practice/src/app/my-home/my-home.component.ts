@@ -44,8 +44,6 @@ export class MyHomeComponent implements OnInit {
     this.formInfo();
     this.getBookmarkData();
     this.mouseHoverEvent();
-    javascript:alert(document.title)
-
   }
 
   mouseHoverEvent() {
