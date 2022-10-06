@@ -1,0 +1,117 @@
+<div class="modal-common">
+<span class="modal-head-text">Add Bookmark</span>
+<div class="modal-div">
+  <form [id]="formId" [formGroup]="form" autocomplete="off">
+        <div
+        fxLayout="row wrap"
+        fxLayoutGap="10px"
+        fxLayoutAlign="flex-start">
+
+          <div
+            fxLayout = "column"
+            fxFlex="0 1 calc(100% - 10px)">
+              <mat-form-field appearance="outline">
+                <mat-label>Title</mat-label>
+                <input matInput formControlName="title" placeholder="Type Title">
+                <mat-error
+                  *ngIf="f.title.invalid && (f.title.dirty || f.title.touched)">
+                  <ng-container *ngIf="f.title.errors.required">
+                      Title is required.
+                  </ng-container>
+                </mat-error>
+              </mat-form-field>
+        </div>
+
+        <div
+            fxLayout = "column"
+            fxFlex="0 1 calc(100% - 10px)">
+              <mat-form-field appearance="outline">
+                <mat-label>URL</mat-label>
+                <input matInput formControlName="url" placeholder="Type URL" (focusout)="onClickURL()">
+                <mat-error
+                  *ngIf="f.url.invalid && (f.url.dirty || f.url.touched)">
+                  <ng-container *ngIf="f.url.errors.required">
+                      URL is required.
+                  </ng-container>
+                  <ng-container *ngIf="f.url.errors.pattern">
+                   Invalid URL format
+                </ng-container>
+                </mat-error>
+              </mat-form-field>
+        </div>
+
+        <div
+            fxLayout = "column"
+            fxFlex="0 1 calc(85% - 10px)">
+                <mat-form-field appearance="outline">
+                <mat-label>Category</mat-label>
+                <mat-select formControlName="viewCategory" [disabled]="isShowCategory" (selectionChange)="onChangeCategory($event.value)">
+                  <mat-option *ngFor="let category of categoryList" [value]="category.value">
+                    {{category.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+        </div>
+
+        <div
+            fxLayout = "column"
+            fxFlex="0 1 calc(10% - 10px)"
+            style="padding: 15px 0px 0px 10px;">
+        <button 
+            mat-icon-button 
+            type="button" 
+            style="border: 1px solid white"
+            [disabled]="isShowCategory"
+            *ngIf="type =='add'"
+            (click)="onAddCategoryButtonClick()"
+        >
+            <mat-icon style="color:green;">add</mat-icon>
+        </button>
+        </div>
+
+        <div
+            fxLayout = "column"
+            fxFlex="0 1 calc(85% - 10px)"
+            *ngIf="isShowCategory"
+            >
+                <mat-form-field appearance="outline">
+                <mat-label>New Category Name</mat-label>
+                  <input matInput formControlName="category">
+                <mat-error
+                  *ngIf="f.category.invalid && (f.category.dirty || f.category.touched)">
+                  <ng-container *ngIf="f.category.errors.required">
+                    New Category is required.
+                  </ng-container>
+                </mat-error>
+              </mat-form-field>
+        </div>
+
+        <div
+            fxLayout = "column"
+            fxFlex="0 1 calc(10% - 10px)"
+            *ngIf="isShowCategory"
+            style="padding: 15px 0px 0px 10px;">
+        <button 
+            mat-icon-button 
+            type="button" 
+            style="border: 1px solid white"
+            [disabled]="!isShowCategory"
+            (click)="onClickCancleButton()"
+        >
+            <mat-icon style="color:red;">cancel</mat-icon>
+        </button>
+        </div>
+
+        </div>
+      </form>
+</div>
+<div class="mod-back-button" fxLayoutGap="10px">
+    <button mat-stroked-button type="button" [mat-dialog-close]="true" style="background-color:red; color:white">
+        Back
+    </button>
+    <button mat-stroked-button type="button" (click)="onSaveConfirmation()" style="background-color:#a7fdac; color:white">
+        <span *ngIf="type == 'add'">Save</span>
+        <span *ngIf="type != 'add'">Update</span>
+    </button>
+</div>
+</div>

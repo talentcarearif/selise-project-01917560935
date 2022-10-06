@@ -1,0 +1,98 @@
+.modal-div {
+    max-height: 60vh;
+    overflow-y: auto;
+    margin-top: 10px;
+}
+
+.modal-head-text {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #ffffff;    
+}
+
+.txt-center{
+    text-align: center;
+}
+
+.txt-right {
+    text-align: right;
+}
+
+.mod-back-button {
+    padding-top: 10px;
+    float: right;
+}
+
+
+//mat form field color change
+.mat-form-field-label {
+    color:#ededed !important;
+  } 
+  
+  .mat-focused .mat-form-field-label {
+    /*change color of label*/
+    color: #ffffff !important;
+    font-weight: bold;
+   }
+  
+  .mat-form-field-underline {
+    /*change color of underline*/
+    background-color: #d6d6d6 !important;
+  } 
+  
+  
+  .mat-form-field-ripple {
+   /*change color of underline when focused*/
+   background-color: #e2e2e2 !important;
+  }
+  
+  
+  .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: #f1f1f1 !important;
+  }
+  
+  .mat-form-field-appearance-outline:not(.mat-form-field-disabled) .mat-form-field-flex:hover .mat-form-field-outline {
+    // opacity: 0;
+    transition: opacity .6s cubic-bezier(.25,.8,.25,1);
+    -webkit-border-radius: 0.5vw;
+    -moz-border-radius: 0.5vw;
+    border-radius: 0.5vw;
+    box-shadow: #066e0b1f 0px 3px 5px 0px,#476add52 0px 3px 10px 0px;
+    -webkit-box-shadow: #066e0b1f 0px 3px 5px 0px,#476add52 0px 3px 10px 0px;
+    -moz-box-shadow: #066e0b1f 0px 3px 5px 0px,#476add52 0px 3px 10px 0px;
+  }
+  
+  .mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick {
+    color: #c70000 !important;
+    opacity: 0.7 !important;
+  }
+  
+  mat-form-field mat-label {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  .mat-input-element  {
+    color: #f2f2f2;
+  }
+  
+  .not-empty-select.mat-selected {
+    color: #f1f6f1 !important;
+  }
+
+  .not-empty-select.mat-selected {
+    color: green !important;
+  }
+  
+  .mat-select-value-text {
+    color: #e5fde5 !important;
+  }
+  
+  mat-datepicker-toggle {
+    color: #ffffff !important;
+  }
+
+  .mat-select-value {
+    color: #ffffff !important;
+  }

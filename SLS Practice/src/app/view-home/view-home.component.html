@@ -1,0 +1,97 @@
+<div class="common-div-design">
+
+    <div fxLayout="column" fxFlex="100%">
+  
+      <div fxFlex="15%" fxLayoutGap="10px" style="padding: 0px 20px 0px 0px;">
+        <div fxFlex="80%" style="display:flex; align-items:center;">
+          <h1 style="text-shadow: 2px 2px 5px #00000080;">View User Information</h1>
+        </div>
+        <div fxFlex="20%" fxLayoutAlign="end center" fxLayoutGap="10px">
+          <button mat-raised-button color="accent" type="button" routerLink="">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+      </div>
+  
+      <div fxFlex="85%">
+        <div fxLayout="column" fxLayout.xs="column" fxLayout.sm="column">
+            <div
+                fxLayout = "row wrap"
+                fxLayoutGap="10px"
+                fxFlex="100%"
+                fxFlex.sm="50%"
+                fxLayout.lt-sm="column"
+                fxFlex.xs="100%">
+                <div 
+                    fxLayout = "column" 
+                    fxFlex="0 1 calc(25% - 10px)">
+                    <mat-form-field>
+                    <input 
+                      matInput                   
+                      placeholder="Search" 
+                      (keyup)="applyFilter($event)"
+                      autocomplete="off">
+                    </mat-form-field>
+                </div>
+            </div>
+          </div>
+        
+          <table mat-table [dataSource]="dataSource" class="mat-data-table">
+        
+            <ng-container matColumnDef="firstName">
+              <th mat-header-cell *matHeaderCellDef> First Name </th>
+              <td mat-cell *matCellDef="let element"> {{element.firstname}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="lastName">
+              <th mat-header-cell *matHeaderCellDef> Last Name</th>
+              <td mat-cell *matCellDef="let element"> {{element.lastname}} </td>
+            </ng-container>
+           
+            <ng-container matColumnDef="age">
+              <th mat-header-cell *matHeaderCellDef> Age </th>
+              <td mat-cell *matCellDef="let element"> {{element.age}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="phoneNumber">
+              <th mat-header-cell *matHeaderCellDef> Phone Number </th>
+              <td mat-cell *matCellDef="let element"> {{element.phonenumber}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="address">
+              <th mat-header-cell *matHeaderCellDef> Address </th>
+              <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+            </ng-container>
+        
+            <!-- <ng-container matColumnDef="Action" stickyEnd>
+              <th mat-header-cell *matHeaderCellDef class="mat-table-action">Action</th>
+              <td mat-cell *matCellDef="let element">
+                <section 
+                *ngIf="element.status == 'A'">
+                <mat-icon class="delete-record-btn" (click)="deleteAllowance(element)" >delete_forever</mat-icon>
+                <mat-icon class="update-record-btn" (click)="updateAllowance(element)">edit</mat-icon>
+                </section>           
+              </td>
+            </ng-container> -->
+        
+           <!-- <ng-container matColumnDef="approval_status">
+             <th class="apr-status" mat-header-cell *matHeaderCellDef>Approved Y/N</th>
+             <td class="apr-status-td" mat-cell *matCellDef="let element; let i = index">
+                <mat-radio-group>
+                    <mat-radio-button (change)="approvalFlag(i,element.id, 'Y', element.apply_type)" value="Y">Approve
+                    </mat-radio-button>
+                    <mat-radio-button (change)="approvalFlag(i,element.id, 'N', element.apply_type)" value="N">Cancel
+                    </mat-radio-button>
+                </mat-radio-group>
+             </td>
+           </ng-container> -->
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>  
+          </table>
+        
+          <mat-paginator [pageSizeOptions]="[5,10, 20]" showFirstLastButtons></mat-paginator>
+      </div>
+
+    </div>
+</div>

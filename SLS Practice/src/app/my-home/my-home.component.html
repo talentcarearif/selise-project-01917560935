@@ -1,0 +1,92 @@
+<div class="common-div-design">
+
+  <div fxLayout="column" fxFlex="100%">
+
+    <div fxFlex="15%" fxLayoutGap="10px" style="padding: 0px 20px 0px 0px;">
+      <div fxFlex="80%" style="display:flex; align-items:center;">
+        <h1 style="text-shadow: 2px 2px 5px #00000080;">Bookmark Manager</h1>
+      </div>
+      <div fxFlex="20%" fxLayoutAlign="end center" fxLayoutGap="10px">
+        <button mat-raised-button color="primary" type="button" (click)="openAddBookmarkModal('add')">
+         Add Bookmark
+        </button>
+      </div>
+    </div>
+
+    <div fxFlex="85%" style="overflow-y: auto;">
+
+      <div fxFlex="100%" fxLayout="row">
+        <div fxFlex="60%">
+          <table>
+            <tbody>
+              <tr *ngFor="let bmitem of bookMarkArray | groupBy: 'category' ; let i = index">
+                <div>
+                  <td style="font-weight:bold; font-size: 1.3rem; color:brown">{{bmitem.key}}</td>
+                </div>
+
+                <div style="border: 2px solid #5a5a5a;
+                            overflow-y: auto;
+                            max-height: 150px;
+                            min-width: 400px;
+                            margin: 5px 0px 20px 0px;
+                            border-radius: 5px;
+                            padding: 10px;">
+                  <div *ngFor="let item of bmitem.value" fxLayout="row" fxLayoutAlign="space-between center">
+                    <div>
+                      <td style="font-weight:bold">{{item.title}}</td>
+                    </div>
+                    <div style="margin: 0px 10px 20px 50px;">
+                      <button 
+                        mat-raised-button 
+                        color="primary" 
+                        style="width: 80px; height: 35px;"
+                        (mouseover)="onMouseOverDetailsButton(item)"
+                        (click)="onClickDetailsButton(item)">
+                        Details
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+
+        <div fxFlex="40%" fxLayoutAlign="center center">
+          <div style="border: 2px solid #5a5a5a;
+                      overflow-y: auto;
+                      max-height: 150px;
+                      margin: 5px 0px 20px 0px;
+                      border-radius: 5px;
+                      min-width: 300px;
+                      min-height: 100px;
+                      padding: 10px;
+                      cursor: pointer;"
+               *ngIf="selectedItem != null" 
+               (click)="onClickDiv()"      
+          >
+            <div>
+              <span style="font-weight:bold">
+                Title
+              </span> : {{selectedItem?.title}}
+            </div>
+            <div>
+              <span style="font-weight:bold">
+                URL
+              </span> : {{selectedItem?.url}}
+            </div>
+            <div>
+              <span style="font-weight:bold">
+                Category
+              </span> : {{selectedItem?.category}}
+            </div>
+          </div>
+        </div>
+
+      </div>
+      
+    </div>
+  </div>
+
+</div>
