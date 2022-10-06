@@ -61,6 +61,9 @@ export class MyHomeComponent implements OnInit {
     let getData = JSON.parse(localStorage.getItem('bookmark'));
     if (getData?.length > 0) {
       this.bookMarkArray = getData;
+      this.bookMarkArray.sort((a:any,b:any)=>{
+        return a.category - b.category
+      });
     } else {
       this.bookMarkArray = [];
     }
