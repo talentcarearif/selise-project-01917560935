@@ -50,8 +50,6 @@ export class AddBookmarkComponent implements OnInit {
     if(this.type == 'update') {
       this.form.patchValue(this.selectedItem); 
       this.form.get('viewCategory').setValue(this.form?.value?.category);  
-      console.log('selectedItem ', this.selectedItem, this.form.value, this.form.value.category);
-
     }
   }
 
